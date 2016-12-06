@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class SmartfridgeConfig(AppConfig):
-    name = 'smartfridge'
+    name = 'smartfridgeapp'

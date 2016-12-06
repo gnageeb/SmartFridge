@@ -37,8 +37,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('qty', models.FloatField()),
                 ('unit', models.CharField(max_length=20)),
-                ('fridge_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridge.Fridge')),
-                ('item_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridge.Item')),
+                ('fridge_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridgeapp.Fridge')),
+                ('item_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridgeapp.Item')),
             ],
         ),
         migrations.CreateModel(
@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('qty', models.FloatField()),
                 ('unit', models.CharField(max_length=20)),
-                ('item_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridge.Item')),
+                ('item_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridgeapp.Item')),
             ],
         ),
         migrations.CreateModel(
@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('price', models.FloatField()),
                 ('unit', models.CharField(max_length=20)),
-                ('item_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridge.Item')),
+                ('item_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridgeapp.Item')),
             ],
         ),
         migrations.CreateModel(
@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
                 ('meal_id', models.CharField(max_length=200, primary_key=True, serialize=False)),
                 ('meal_name', models.CharField(max_length=50)),
                 ('meal_recipe', models.CharField(max_length=1000)),
-                ('items', models.ManyToManyField(through='smartfridge.Item_Meal', to='smartfridge.Item')),
+                ('items', models.ManyToManyField(through='smartfridgeapp.Item_Meal', to='smartfridgeapp.Item')),
             ],
         ),
         migrations.CreateModel(
@@ -76,7 +76,7 @@ class Migration(migrations.Migration):
                 ('phone_no', models.CharField(max_length=20)),
                 ('address', models.CharField(max_length=200)),
                 ('website', models.URLField()),
-                ('products', models.ManyToManyField(through='smartfridge.Item_Store', to='smartfridge.Item')),
+                ('products', models.ManyToManyField(through='smartfridgeapp.Item_Store', to='smartfridgeapp.Item')),
             ],
         ),
         migrations.CreateModel(
@@ -92,21 +92,21 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='item_store',
             name='store_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridge.Store'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridgeapp.Store'),
         ),
         migrations.AddField(
             model_name='item_meal',
             name='meal_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridge.Meal'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridgeapp.Meal'),
         ),
         migrations.AddField(
             model_name='fridge',
             name='items',
-            field=models.ManyToManyField(through='smartfridge.Item_Fridge', to='smartfridge.Item'),
+            field=models.ManyToManyField(through='smartfridgeapp.Item_Fridge', to='smartfridgeapp.Item'),
         ),
         migrations.AddField(
             model_name='fridge',
             name='owner',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridge.User'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='smartfridgeapp.User'),
         ),
     ]
