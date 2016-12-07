@@ -17,13 +17,18 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 from smartfridgeapp import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 router = routers.DefaultRouter()
-router.register(r'items', views.ItemViewSet)
+#router.register(r'items', views.ItemViewSet)
 
 urlpatterns = [
     #url(r'^smartfridgeapp/', include('smartfridgeapp.urls')),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
+    url(r'^items/(?P<pk>[\d]+)/$', views.ItemDetail.as_view()),
+    url(r'^items/$', views.ItemList.as_view()),
 ]
+
+#urlpatterns = format_suffix_patterns(urlpatterns)
