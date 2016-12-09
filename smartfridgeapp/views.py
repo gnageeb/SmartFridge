@@ -7,6 +7,11 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import JSONParser
 
+
+class AddItemtoFridge(APIView):
+    fridge = Fridge.objects.get(pk='11')  # should get this from the session
+
+
 class ItemList(APIView):
     """
     List all items, or create a new item.
@@ -53,6 +58,7 @@ class ItemDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    # TODO: delete item form fridge
     def delete(self, request, pk, format=None):
         item = self.get_object(pk)
         item.delete()

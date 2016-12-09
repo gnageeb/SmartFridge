@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
-    url(r'^items/(?P<pk>[\d]+)/$', views.ItemDetail.as_view()),
+    url(r'^items/(?P<pk>[0-9a-z-]+)/$', views.ItemDetail.as_view()),
     url(r'^items/$', views.ItemList.as_view()),
 ]
 
