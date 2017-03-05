@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f197f658-f63c-49c8-92e4-7207edeb6f18" name="Default" comment="" />
+    <list default="true" id="f197f658-f63c-49c8-92e4-7207edeb6f18" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/untitled1/settings.py" afterPath="$PROJECT_DIR$/untitled1/settings.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +39,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/untitled1/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1665">
-              <caret line="131" column="5" lean-forward="false" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
+            <state relative-caret-position="105">
+              <caret line="27" column="46" lean-forward="false" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -63,6 +65,12 @@
               <caret line="49" column="78" lean-forward="false" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
               <folding>
                 <element signature="e#0#90#0" expanded="true" />
+                <marker date="1488724530000" expanded="true" signature="697:787" ph="..." />
+                <marker date="1488724530000" expanded="true" signature="713:787" ph="..." />
+                <marker date="1488724530000" expanded="true" signature="1104:1269" ph="..." />
+                <marker date="1488724530000" expanded="true" signature="1187:1269" ph="..." />
+                <marker date="1488724530000" expanded="true" signature="1338:1596" ph="..." />
+                <marker date="1488724530000" expanded="true" signature="1489:1596" ph="..." />
               </folding>
             </state>
           </provider>
@@ -147,12 +155,12 @@
         <option value="$PROJECT_DIR$/smartfridge/serializers.py" />
         <option value="$PROJECT_DIR$/smartfridge/views.py" />
         <option value="$PROJECT_DIR$/smartfridgeapp/apps.py" />
-        <option value="$PROJECT_DIR$/untitled1/settings.py" />
         <option value="$PROJECT_DIR$/smartfridgeapp/admin.py" />
         <option value="$PROJECT_DIR$/untitled1/urls.py" />
         <option value="$PROJECT_DIR$/smartfridgeapp/serializers.py" />
         <option value="$PROJECT_DIR$/smartfridgeapp/models.py" />
         <option value="$PROJECT_DIR$/smartfridgeapp/views.py" />
+        <option value="$PROJECT_DIR$/untitled1/settings.py" />
       </list>
     </option>
   </component>
@@ -718,6 +726,12 @@
           <caret line="7" column="60" lean-forward="false" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
           <folding>
             <element signature="e#0#90#0" expanded="true" />
+            <marker date="1488724530000" expanded="true" signature="697:787" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="713:787" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="1104:1269" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="1187:1269" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="1338:1596" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="1489:1596" ph="..." />
           </folding>
         </state>
       </provider>
@@ -876,6 +890,12 @@
           <caret line="49" column="78" lean-forward="false" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
           <folding>
             <element signature="e#0#90#0" expanded="true" />
+            <marker date="1488724530000" expanded="true" signature="697:787" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="713:787" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="1104:1269" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="1187:1269" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="1338:1596" ph="..." />
+            <marker date="1488724530000" expanded="true" signature="1489:1596" ph="..." />
           </folding>
         </state>
       </provider>
@@ -903,8 +923,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/untitled1/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1665">
-          <caret line="131" column="5" lean-forward="false" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
+        <state relative-caret-position="105">
+          <caret line="27" column="46" lean-forward="false" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
           <folding />
         </state>
       </provider>
