@@ -25,16 +25,27 @@ class ItemList(APIView):
         serializer = ItemFridgeSerializer(fridge_items, many=True)
         return Response(serializer.data)
 
-    def post(self, request, format=None):
-        serializer = ItemSerializer(data=request.data)
-        if serializer.is_valid():
-            fridge = Fridge.objects.get(owner=request.user)
-            new_item = Item(item_id=request.data['item_id'], item_name=request.data['item_name'], calories=request.data['calories'], unit=request.data['unit'])
-            new_item.save()
-            new_item_fridge = Item_Fridge(fridge=fridge, item=new_item, qty=request.data['qty'], unit=request.data['qty-unit'])
-            new_item_fridge.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def post(self,request):
+        owner = request.user
+        fridge = Fridge.objects.get(owner=owner)
+        item_id = request.data["item_id"]
+        item_name = request.data["item_name"]
+        calories = request.data["calories"]
+        unit = request.data["unit"]
+        qty = request.data["qty"]
+        item, created = Item.objects.get_or_create(item_id=item_id)
+        item.item_name = item_name
+        item.calories = calories
+
+        item_fridge, created = Item_Fridge.objects.get_or_create(item=item, fridge=fridge)
+        item_fridge.qty += qty
+        item_fridge.unit = unit
+        item_fridge.save()
+        item.save()
+        if not created:
+            return Response(status=status.HTTP_302_FOUND)
+
+        return Response(status=status.HTTP_201_CREATED)
 
 
 class ItemDetail(APIView):

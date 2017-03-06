@@ -26,7 +26,7 @@ class Fridge(models.Model):
 class Item_Fridge(models.Model):
     fridge = models.ForeignKey(Fridge, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    qty = models.FloatField()
+    qty = models.FloatField(default=0)
     threshold = models.FloatField(default=0)
     unit = models.CharField(max_length=20)
 
