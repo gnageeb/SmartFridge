@@ -34,8 +34,15 @@ class ItemList(APIView):
         unit = request.data["unit"]
         qty = request.data["qty"]
         item, created = Item.objects.get_or_create(item_id=item_id)
+        basket = Basket.objects.get(shopper=owner)
         item.item_name = item_name
         item.calories = calories
+        basket_item = Basket_Item.objects.get(item=item, basket=basket)
+        if basket_item != None:
+            if basket_item.qty <= qty:
+                basket_item.qty -= qty
+                if basket_item.qty <= 0:
+                    basket_item.delete()
 
         item_fridge, created = Item_Fridge.objects.get_or_create(item=item, fridge=fridge)
         item_fridge.qty += qty
@@ -165,20 +172,23 @@ class ConsumeItem(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         fridge_day_calories, _ = Fridge_Day_Calories.objects.get_or_create(fridge_id=fridge,date=datetime.date.today())
-        fridge_day_calories.calories += item.calories
+        fridge_day_calories.calories += item.calories * request.data["qty"]
         fridge_day_calories.save()
-        if fridge_item.qty > 0:
+        if fridge_item.qty >= request.data["qty"]:
             fridge_item.qty -= request.data["qty"]
+            if fridge_item.qty < fridge_item.threshold:
+                basket = Basket.objects.get(shopper=owner)
+                basket_item, _ = Basket_Item.objects.get_or_create(basket=basket, item=item)
+                basket_item.qty = fridge_item.threshold - fridge_item.qty
+                basket_item.unit = fridge_item.unit
+                basket.save()
+                basket_item.save()
+            if fridge_item.qty <= 0:
+                fridge_item.delete()
+            else:
+                fridge_item.save()
         else:
             return Response(status=status.HTTP_204_NO_CONTENT)
-        fridge_item.save()
-        if fridge_item.qty < fridge_item.threshold:
-            basket = Basket.objects.get(shopper=owner)
-            basket_item, _ = Basket_Item.objects.get_or_create(basket=basket,item=item)
-            basket_item.qty = fridge_item.threshold - fridge_item.qty
-            basket_item.unit = fridge_item.unit
-            basket.save()
-            basket_item.save()
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
