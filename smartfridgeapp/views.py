@@ -37,7 +37,11 @@ class ItemList(APIView):
         basket = Basket.objects.get(shopper=owner)
         item.item_name = item_name
         item.calories = calories
-        basket_item = Basket_Item.objects.get(item=item, basket=basket)
+        try:
+            basket_item = Basket_Item.objects.get(item=item, basket=basket)
+        except Basket_Item.DoesNotExist:
+            basket_item = None
+
         if basket_item is not None:
             if basket_item.qty >= qty:
                 basket_item.qty -= qty
