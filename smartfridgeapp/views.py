@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import JSONParser
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
 import uuid, datetime
 
@@ -17,7 +17,7 @@ class ItemList(APIView):
     """
     List all items, or create a new item.
     """
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
     def get(self, request, format=None):
         fridge = Fridge.objects.get(owner=request.user)
@@ -52,7 +52,7 @@ class ItemDetail(APIView):
     """
     Retrieve, update or delete a item instance.
     """
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
     parser_classes = (JSONParser,)
 
@@ -82,7 +82,7 @@ class ItemDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class AccountLogin(APIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (AllowAny,)
     def post(self,request):
         user = authenticate(username=request.data['username'], password=request.data['password'])
@@ -97,7 +97,7 @@ class AccountLogin(APIView):
 
 
 class AccountRegister(APIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (AllowAny,)
 
     def post(self,request):
@@ -122,7 +122,7 @@ class FridgeDetail(APIView):
     """
        Retrieve, update a fridge instance.
        """
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
     parser_classes = (JSONParser,)
 
@@ -149,7 +149,7 @@ class FridgeDetail(APIView):
 
 
 class ConsumeItem(APIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
     parser_classes = (JSONParser,)
 
@@ -182,7 +182,7 @@ class ConsumeItem(APIView):
 
 
 class ConsumedCalories(APIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
 
     def get(self,request):
@@ -197,7 +197,7 @@ class ConsumedCalories(APIView):
 
 
 class SetItemThreshold(APIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
     parser_classes = (JSONParser,)
 
@@ -218,7 +218,7 @@ class SetItemThreshold(APIView):
 
 
 class ListBasketItems(APIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
     parser_classes = (JSONParser,)
 
@@ -231,7 +231,7 @@ class ListBasketItems(APIView):
 
 
 class GetStores(APIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
     parser_classes = (JSONParser,)
 
