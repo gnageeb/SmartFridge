@@ -110,7 +110,7 @@ class AccountRegister(APIView):
             new_fridge = Fridge(owner=user,fridge_id=uuid.uuid4())
             new_fridge.save()
             # assign fridge to the user
-            new_basket = Basket(owner=user, basket_id=uuid.uuid4())
+            new_basket = Basket(shopper=user, basket_id=uuid.uuid4())
             new_basket.save()
             return Response(user_serializer.data, status=status.HTTP_201_CREATED)
         else:
