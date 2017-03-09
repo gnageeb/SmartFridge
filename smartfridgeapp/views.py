@@ -93,7 +93,7 @@ class AccountLogin(APIView):
                 login(request, user)
                 return Response(serializer.data)
 
-        return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
 class AccountRegister(APIView):
