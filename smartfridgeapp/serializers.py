@@ -32,7 +32,7 @@ class ItemFridgeSerializer(serializers.HyperlinkedModelSerializer):
     item_name = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Item_Fridge
-        fields = ("item_id","item_name","qty","unit","threshold")
+        fields = ("item_id","item_name","qty","unit","threshold","calories")
 
 
 class BasketItemSerializer(serializers.HyperlinkedModelSerializer):

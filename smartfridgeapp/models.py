@@ -34,6 +34,10 @@ class Item_Fridge(models.Model):
     def item_name(self):
         return self.item.item_name
 
+    @property
+    def calories(self):
+        return self.item.calories
+
 
 class Fridge_Day_Calories(models.Model):
     fridge_id = models.ForeignKey(Fridge, on_delete=models.CASCADE)
