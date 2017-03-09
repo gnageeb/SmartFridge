@@ -86,14 +86,15 @@ class AccountLogin(APIView):
     permission_classes = (AllowAny,)
     def post(self,request):
         user = authenticate(username=request.data['username'], password=request.data['password'])
-        serializer = UserSerializer(user)
-        if user is not None:
+        serializer = UserSerializer(user, data=request.data)
+
+        if serializer.is_valid():
             # the password verified for the user
             if user.is_active:
                 login(request, user)
                 return Response(serializer.data)
 
-        return Response(status=status.HTTP_401_UNAUTHORIZED)
+        return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class AccountRegister(APIView):
