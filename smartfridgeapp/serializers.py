@@ -47,4 +47,4 @@ class ItemStoreSerializer(serializers.HyperlinkedModelSerializer):
     item_name = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Item_Store
-        fields = ("store_name","item_name","unit","price","store_id","item_id")
+        fields = ("store_name","item_name","unit","price","store_id","item_id","phone_no")

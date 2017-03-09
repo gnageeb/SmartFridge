@@ -164,7 +164,7 @@ class ConsumeItem(APIView):
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-        fridge_day_calories, _ = Fridge_Day_Calories.objects.get_or_create(fridge=fridge,date=datetime.date.today())
+        fridge_day_calories, _ = Fridge_Day_Calories.objects.get_or_create(fridge_id=fridge,date=datetime.date.today())
         fridge_day_calories.calories += item.calories
         fridge_day_calories.save()
         if fridge_item.qty > 0:
@@ -190,7 +190,7 @@ class ConsumedCalories(APIView):
         owner = request.user
         fridge = Fridge.objects.get(owner=owner)
         date = datetime.date.today()
-        fdc = Fridge_Day_Calories.objects.get(fridge_id=fridge, date=date)
+        fdc, _ = Fridge_Day_Calories.objects.get_or_create(fridge_id=fridge, date=date)
         serializer = FridgeDayCaloriesSerializer(fdc)
         return Response(serializer.data)
 

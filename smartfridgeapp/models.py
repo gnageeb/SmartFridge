@@ -85,6 +85,10 @@ class Item_Store(models.Model):
     def item_name(self):
         return self.item.item_name
 
+    @property
+    def phone_no(self):
+        return self.store.phone_no
+
 
 class Basket(models.Model):
     basket_id = models.CharField(max_length=200, primary_key=True)
