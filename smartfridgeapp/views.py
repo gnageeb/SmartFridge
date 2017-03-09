@@ -38,11 +38,13 @@ class ItemList(APIView):
         item.item_name = item_name
         item.calories = calories
         basket_item = Basket_Item.objects.get(item=item, basket=basket)
-        if basket_item != None:
+        if basket_item is not None:
             if basket_item.qty <= qty:
                 basket_item.qty -= qty
                 if basket_item.qty <= 0:
                     basket_item.delete()
+                else:
+                    basket_item.save()
 
         item_fridge, created = Item_Fridge.objects.get_or_create(item=item, fridge=fridge)
         item_fridge.qty += qty
