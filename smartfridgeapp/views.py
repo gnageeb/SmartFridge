@@ -88,7 +88,7 @@ class AccountLogin(APIView):
         user = authenticate(username=request.data['username'], password=request.data['password'])
         serializer = UserSerializer(user, data=request.data)
 
-        if serializer.is_valid():
+        if serializer.is_valid() and not user == None:
             # the password verified for the user
             if user.is_active:
                 login(request, user)
