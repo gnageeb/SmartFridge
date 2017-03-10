@@ -179,7 +179,7 @@ class ConsumeItem(APIView):
         fridge_day_calories.save()
         if fridge_item.qty >= request.data["qty"]:
             fridge_item.qty -= request.data["qty"]
-            if fridge_item.qty < fridge_item.threshold:
+            if fridge_item.qty <= fridge_item.threshold:
                 basket = Basket.objects.get(shopper=owner)
                 basket_item, _ = Basket_Item.objects.get_or_create(basket=basket, item=item)
                 basket_item.qty = fridge_item.threshold - fridge_item.qty
