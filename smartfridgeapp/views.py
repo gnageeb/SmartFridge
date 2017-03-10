@@ -42,11 +42,10 @@ class ItemList(APIView):
         except Basket_Item.DoesNotExist:
             basket_item = None
         if basket_item is not None:
-            if basket_item.qty >= qty:
-                basket_item.qty -= qty
-                basket_item.save()
-                if basket_item.qty <= 0:
-                    basket_item.delete()
+            basket_item.qty -= qty
+            basket_item.save()
+            if basket_item.qty <= 0:
+                basket_item.delete()
 
         item_fridge, created = Item_Fridge.objects.get_or_create(item=item, fridge=fridge)
         item_fridge.qty += qty
